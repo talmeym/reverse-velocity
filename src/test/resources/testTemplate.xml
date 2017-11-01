@@ -1,4 +1,5 @@
 <response insert="response" class="com.reverse.velocity.test.Response">
+	<date mapper="com.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response.timestamp</date>
 	<message>$response.message</message>
 	<product insert="response.products" class="com.reverse.velocity.test.Product" type="$response.products.type" mapper="@type:com.reverse.velocity.test.ProductTypeMapper">
 		<id>$response.products.id</id>

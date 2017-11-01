@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat;
 import com.reverse.velocity.MappingException;
 import com.reverse.velocity.TypeMapper;
 
-public class DateTypeMapper implements TypeMapper {
+public class DateMapper implements TypeMapper {
 	private final String dateFormat;
 	
-	public DateTypeMapper(String arg) {
+	public DateMapper(String arg) {
 		dateFormat = arg;
 	}
 	

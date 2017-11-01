@@ -1,10 +1,20 @@
 package com.reverse.velocity.test;
 
+import java.util.Date;
 import java.util.List;
 
 public class Response {
+	Date timestamp;
 	String message;
 	List<Product> products;
+
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+	}
 
 	public String getMessage() {
 		return message;
@@ -25,7 +35,8 @@ public class Response {
 	@Override
 	public String toString() {
 		return "Response{" +
-			"message='" + message + '\'' +
+			"timestamp=" + timestamp +
+			", message='" + message + '\'' +
 			", products=" + products +
 			'}';
 	}

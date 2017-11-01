@@ -35,8 +35,10 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 		}
 	}
 
-	protected void addTypeMapperIfAppropriate(String path, String mapper) {
-		TypeMapperLoader.loadTypeMapper(path, mapper, config);
+	private void addTypeMapperIfAppropriate(String path, String mapper) {
+		if(mapper != null) {
+			TypeMapperLoader.loadTypeMapper(path, mapper, config);
+		}
 	}
 
 	@Override

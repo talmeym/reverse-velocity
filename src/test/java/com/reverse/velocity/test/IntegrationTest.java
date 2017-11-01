@@ -19,5 +19,6 @@ public class IntegrationTest {
 		Response response = (Response) result.get("response");
 		assertEquals("Test Message", response.getMessage());
 		assertEquals(2, response.getProducts().size());
+		System.out.println(result);
 	}
 }
