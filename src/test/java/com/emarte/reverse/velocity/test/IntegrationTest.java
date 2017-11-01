@@ -1,4 +1,4 @@
-package com.reverse.velocity.test;
+package com.emarte.reverse.velocity.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -10,9 +10,9 @@ import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-import com.reverse.velocity.ParseException;
-import com.reverse.velocity.Parser;
-import com.reverse.velocity.ParserFactory;
+import com.emarte.reverse.velocity.ParseException;
+import com.emarte.reverse.velocity.Parser;
+import com.emarte.reverse.velocity.ParserFactory;
 
 public class IntegrationTest {
 	@Test

@@ -1,4 +1,4 @@
-package com.reverse.velocity;
+package com.emarte.reverse.velocity;
 
 @SuppressWarnings("serial")
 public class ParseException extends Exception {

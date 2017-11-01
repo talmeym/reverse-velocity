@@ -1,4 +1,4 @@
-package com.reverse.velocity;
+package com.emarte.reverse.velocity;
 
 class MapProcessor {
 	private String insertKey;

@@ -1,4 +1,4 @@
-package com.reverse.velocity.test;
+package com.emarte.reverse.velocity.test;
 
 import java.util.Date;
 import java.util.List;

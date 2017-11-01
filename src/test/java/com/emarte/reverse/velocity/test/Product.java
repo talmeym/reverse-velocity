@@ -1,4 +1,4 @@
-package com.reverse.velocity.test;
+package com.emarte.reverse.velocity.test;
 
 public class Product {
 	private int id;

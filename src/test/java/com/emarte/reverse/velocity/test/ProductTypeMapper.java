@@ -1,7 +1,7 @@
-package com.reverse.velocity.test;
+package com.emarte.reverse.velocity.test;
 
-import com.reverse.velocity.MappingException;
-import com.reverse.velocity.TypeMapper;
+import com.emarte.reverse.velocity.MappingException;
+import com.emarte.reverse.velocity.TypeMapper;
 
 public class ProductTypeMapper implements TypeMapper {
 	@Override

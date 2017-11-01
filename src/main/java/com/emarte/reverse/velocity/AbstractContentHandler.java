@@ -1,4 +1,4 @@
-package com.reverse.velocity;
+package com.emarte.reverse.velocity;
 
 import java.util.Stack;
 
@@ -32,8 +32,8 @@ abstract class AbstractContentHandler extends DefaultHandler {
 		if (text.length() > 0) {
 			processText(path.peek(), text);
 		}
-		path.pop();
 
+		path.pop();
     }
 
 	@Override
