@@ -1,0 +1,13 @@
+<response>
+	<message>Test Message</message>
+	<product type='installation'>
+		<id>1</id>
+		<name>STB Standard Install</name>
+		<description>Install for a STB Standard</description>
+	</product>
+	<product type='hardware'>
+		<id>2</id>
+		<name>STB HD</name>
+		<description>An STB HD box</description>
+	</product>
+</response>

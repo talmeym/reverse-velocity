@@ -1,0 +1,8 @@
+<response insert="response" class="com.reverse.velocity.test.Response">
+	<message>$response.message</message>
+	<product insert="response.products" class="com.reverse.velocity.test.Product" type="$response.products.type" mapper="@type:com.reverse.velocity.test.ProductTypeMapper">
+		<id>$response.products.id</id>
+		<name>$response.products.name</name>
+		<description>$response.products.description</description>
+	</product>
+</response>
