@@ -3,6 +3,7 @@ package com.emarte.reverse.velocity.test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,8 +18,9 @@ import com.emarte.reverse.velocity.ParserFactory;
 public class IntegrationTest {
 	@Test
 	public void testAll() throws IOException, ParseException, java.text.ParseException {
-		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", getClass().getResourceAsStream("/testTemplate.xml"));
-		Map<String, Object> result = parser.parse(IOUtils.toString(getClass().getResourceAsStream("/testMessage.xml")));
+		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", streamFile("/testTemplate.xml"));
+
+		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
 		Response response = (Response) result.get("response");
 		assertEquals("Test Message", response.getMessage());
 		assertEquals(parseDate("09-03-1977"), response.getTimestamp());
@@ -28,6 +30,10 @@ public class IntegrationTest {
 
 		assertProduct(products.get(0), 1, "STB Standard Install", "Install for a STB Standard", ProductType.installation);
 		assertProduct(products.get(1), 2, "STB HD", "An STB HD box", ProductType.hardware);
+	}
+
+	private InputStream streamFile(String filename) {
+		return getClass().getResourceAsStream(filename);
 	}
 
 	private Date parseDate(String date) throws java.text.ParseException {

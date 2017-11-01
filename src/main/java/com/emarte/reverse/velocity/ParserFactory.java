@@ -30,9 +30,9 @@ public class ParserFactory {
 			parser.parse(new InputSource(new StringReader(template)), new ParserFactoryContentHandler(config));
 		}
 		catch (IOException e) {
-			throw new IllegalArgumentException("Response template '" + templateName + "' could not be read");
+			throw new IllegalArgumentException("Template '" + templateName + "' could not be read");
 		} catch (SAXException e) {
-			throw new IllegalArgumentException("Response template '" + templateName + "' contains invalid xml");
+			throw new IllegalArgumentException("Template '" + templateName + "' contains invalid xml");
 		} catch (ParserConfigurationException e) {
 			throw new IllegalArgumentException("Cannot create SAXParser - check internal config");
 		}
