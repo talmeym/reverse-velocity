@@ -109,14 +109,14 @@ class ObjectGraphModifier {
 	}
 
 	private String getterMethodName(String fieldName) {
-		StringBuffer methodName = new StringBuffer(fieldName);
+		StringBuilder methodName = new StringBuilder(fieldName);
 		methodName.setCharAt(0, String.valueOf(methodName.charAt(0)).toUpperCase().charAt(0));
 		methodName.insert(0, "get");
 		return methodName.toString();
 	}
 
 	private String setterMethodName(String fieldName) {
-		StringBuffer methodName = new StringBuffer(fieldName);
+		StringBuilder methodName = new StringBuilder(fieldName);
 		methodName.setCharAt(0, String.valueOf(methodName.charAt(0)).toUpperCase().charAt(0));
 		methodName.insert(0, "set");
 		return methodName.toString();
