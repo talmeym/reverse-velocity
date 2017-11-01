@@ -72,7 +72,9 @@ class ParserConfig {
 				if (!classesByPath.keySet().contains(entry.getKey())) {
 					throw new IllegalStateException("class definition missing for element insert [" + mapProcessor + "]");
 				}
+
 				Class clazz = null;
+
 				try {
 					clazz = classesByPath.get(entry.getKey());
 					clazz.newInstance();
@@ -83,11 +85,11 @@ class ParserConfig {
 				catch (InstantiationException e) {
 					throw new IllegalStateException("class [" + clazz.getName() + "] cannot be instantiated");
 				}
+
 				if (listByPath.containsKey(entry.getKey())) {
 					throw new IllegalStateException("Invalid list attribute at non-top-level insert[path=" + entry.getKey() + "]");
 				}
 			}
 		}
 	}
-	
 }

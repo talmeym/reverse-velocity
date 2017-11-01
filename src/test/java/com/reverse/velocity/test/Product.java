@@ -2,9 +2,9 @@ package com.reverse.velocity.test;
 
 public class Product {
 	private int id;
-	String name;
-	String description;
-	ProductType productType;
+	private String name;
+	private String description;
+	private ProductType productType;
 	
 	public void setId(int id) {
 		this.id = id;

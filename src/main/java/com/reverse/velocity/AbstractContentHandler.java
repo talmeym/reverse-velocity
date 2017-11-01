@@ -28,16 +28,18 @@ abstract class AbstractContentHandler extends DefaultHandler {
 	public void endElement(String namespaceURI, String localName, String qname) throws SAXException {
 		String text = buffer.toString().trim();
 		buffer.setLength(0);
+
 		if (text.length() > 0) {
 			processText(path.peek(), text);
 		}
 		path.pop();
+
     }
 
 	@Override
 	public void startElement(String namespaceURI, String localName, String qname, Attributes attributes) throws SAXException {
 		boolean namespaced = namespaceURI != null && namespaceURI.trim().length() > 0;
-		String elementName = namespaced ? namespaceURI + " " + localName : localName;
+		String elementName = namespaced ? namespaceURI + ":" + localName : localName;
 		path.push(path.peek() + "/" + elementName);
 		processElement(path.peek(), attributes);
     }

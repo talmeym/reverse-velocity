@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 public class Response {
-	Date timestamp;
-	String message;
-	List<Product> products;
+	private Date timestamp;
+	private String message;
+	private List<Product> products;
 
 	public Date getTimestamp() {
 		return timestamp;

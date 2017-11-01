@@ -13,11 +13,13 @@ class ListableMap extends HashMap<String, Object> {
 	@SuppressWarnings("unchecked")
 	Object putListable(String key, Object value, boolean forceList) {
 		Object existing = get(key);
+
 		if(existing instanceof List) {
 			List list = (List) existing;
 			list.add(value);
 			return existing;
 		}
+
 		if(existing != null || forceList) {
 			List list = new ArrayList();
 
@@ -29,16 +31,19 @@ class ListableMap extends HashMap<String, Object> {
 			put(key, list);
 			return list;
 		}
+
 		return put(key, value);
 	}
 	
 	@SuppressWarnings("unchecked")
 	Object getListable(String key) {
 		Object existing = get(key);
+
 		if(existing instanceof List) {
 			List list = (List) existing;
 			return list.get(list.size() - 1);
 		}
+
 		return get(key);
 	}
 }
