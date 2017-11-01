@@ -19,6 +19,7 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 			try {
 				config.addProcessorForElement(path, new MapProcessor(insert));
 				config.addClassForPath(path, Class.forName(clazz));
+
 				if (list != null) {
 					config.addListForPath(path, list.equalsIgnoreCase("true"));
 				}
