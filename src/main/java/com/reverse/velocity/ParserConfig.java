@@ -67,6 +67,7 @@ class ParserConfig {
 		for (Iterator<Map.Entry<String, MapProcessor>> iterator = elementProcessorsByPath.entrySet().iterator(); iterator.hasNext();) {
 			Map.Entry<String, MapProcessor> entry = iterator.next();
 			MapProcessor mapProcessor = entry.getValue();
+
 			if (mapProcessor.getFieldModifier() != null) {
 				if (!classesByPath.keySet().contains(entry.getKey())) {
 					throw new IllegalStateException("class definition missing for element insert [" + mapProcessor + "]");

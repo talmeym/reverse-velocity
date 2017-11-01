@@ -51,12 +51,15 @@ class ParserContentHandler extends AbstractContentHandler {
 	
 	private void process(String path, String text) {
 		MapProcessor valueProcessor = config.getProcessorForText(path);
+
 		if (valueProcessor != null) {
 			Object value = text;
 			TypeMapper mapper = config.getTypeMapperForPath(path);
+
 			if (mapper != null) {
 				value = mapper.map(text);
 			}
+
 			valueProcessor.processValue(result, value, false);
 		}
 	}
