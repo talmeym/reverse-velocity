@@ -44,16 +44,17 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 	@Override
 	protected void processText(String path, String text) {
 		if (text.startsWith("$")) {
-			config.addProcessorForText(path, new MapProcessor(text));
+			config.addProcessorForText(path, new MapProcessor(text.substring(1)));
 		}
 	}
 
 	private void processAttributes(String path, Attributes attributes) {
 		for (int i = 0; i < attributes.getLength(); i++) {
 			String attributeValue = attributes.getValue(i);
+
 			if (attributeValue.startsWith("$")) {
 				String pathToInsert = path + "@" + attributes.getLocalName(i);
-				config.addProcessorForText(pathToInsert, new MapProcessor(attributeValue));
+				config.addProcessorForText(pathToInsert, new MapProcessor(attributeValue.substring(1)));
 			}
 		}
 	}

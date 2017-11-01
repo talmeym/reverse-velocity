@@ -5,10 +5,6 @@ class MapProcessor {
 	private ObjectGraphModifier objectModifier;
 	
 	MapProcessor(String valueLocationToken) {
-		if(valueLocationToken.startsWith("$")) {
-			valueLocationToken = valueLocationToken.substring(1);
-		}
-		
 		if(valueLocationToken.indexOf('.') != -1) {
 			String[] tokens = valueLocationToken.split("\\.");
 			insertKey = tokens[0];
