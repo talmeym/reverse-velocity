@@ -17,10 +17,20 @@ import com.emarte.reverse.velocity.ParserFactory;
 
 public class IntegrationTest {
 	@Test
-	public void testAll() throws IOException, ParseException, java.text.ParseException {
+	public void testXml() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", streamFile("/testTemplate.xml"));
-
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
+		assertResults(result);
+	}
+
+	@Test
+	public void testNameSpacedXml() throws IOException, ParseException, java.text.ParseException {
+		Parser parser = ParserFactory.createParserFromTemplateStream("namespacedTestTemplate.xml", streamFile("/namespacedTestTemplate.xml"));
+		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/namespacedTestMessage.xml")));
+		assertResults(result);
+	}
+
+	private void assertResults(Map<String, Object> result) throws java.text.ParseException {
 		Response response = (Response) result.get("response");
 		assertEquals("Test Message", response.getMessage());
 		assertEquals(parseDate("09-03-1977"), response.getTimestamp());

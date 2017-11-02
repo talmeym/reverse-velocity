@@ -1,0 +1,14 @@
+<rv:response xmlns:rv="http://www.emarte.org/reverse-velocity">
+	<rv:date>09-03-1977</rv:date>
+	<rv:message>Test Message</rv:message>
+	<rv:product type='installation'>
+		<rv:id>1</rv:id>
+		<rv:name>STB Standard Install</rv:name>
+		<rv:description>Install for a STB Standard</rv:description>
+	</rv:product>
+	<rv:product type='hardware'>
+		<rv:id>2</rv:id>
+		<rv:name>STB HD</rv:name>
+		<rv:description>An STB HD box</rv:description>
+	</rv:product>
+</rv:response>
