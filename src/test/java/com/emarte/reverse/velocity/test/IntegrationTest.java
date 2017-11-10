@@ -32,7 +32,7 @@ public class IntegrationTest {
 
 	@Test
 	public void testXmlWithInserts() throws IOException, ParseException, java.text.ParseException {
-		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", streamFile("/testTemplate.xml"));
+		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplateInserts.xml", streamFile("/testTemplateInserts.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
 
 		assertResultsObjects(result);
