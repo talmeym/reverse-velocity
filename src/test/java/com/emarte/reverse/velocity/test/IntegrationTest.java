@@ -1,6 +1,10 @@
 package com.emarte.reverse.velocity.test;
 
-import static org.junit.Assert.assertEquals;
+import com.emarte.reverse.velocity.ParseException;
+import com.emarte.reverse.velocity.Parser;
+import com.emarte.reverse.velocity.ParserFactory;
+import org.apache.commons.io.IOUtils;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,18 +13,28 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.Test;
-import com.emarte.reverse.velocity.ParseException;
-import com.emarte.reverse.velocity.Parser;
-import com.emarte.reverse.velocity.ParserFactory;
+import static java.util.Arrays.asList;
+import static org.junit.Assert.assertEquals;
 
 public class IntegrationTest {
 	@Test
-	public void testXml() throws IOException, ParseException, java.text.ParseException {
+	public void testXmlWithInserts() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", streamFile("/testTemplate.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
 		assertResults(result);
+	}
+
+	@Test
+	public void testXmlNoInserts() throws IOException, ParseException, java.text.ParseException {
+		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplateNoInserts.xml", streamFile("/testTemplateNoInserts.xml"));
+		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
+
+		assertEquals("Test Message", result.get("response-message"));
+		assertEquals(parseDate("09-03-1977"), result.get("response-timestamp"));
+		assertEquals(asList("installation", "hardware"), result.get("response-product-types"));
+		assertEquals(asList("1", "2"), result.get("response-product-ids"));
+		assertEquals(asList("STB Standard Install", "STB HD"), result.get("response-product-names"));
+		assertEquals(asList("Install for a STB Standard", "An STB HD box"), result.get("response-product-descriptions"));
 	}
 
 	@Test

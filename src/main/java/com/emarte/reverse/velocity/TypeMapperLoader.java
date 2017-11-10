@@ -9,15 +9,19 @@ class TypeMapperLoader {
 		String attribute = "";
 		String arg = null;
 		int index = mapper.indexOf("[");
+
 		if(index != -1) {
 			arg = mapper.substring(mapper.indexOf("[") + 1, mapper.indexOf("]"));
 			mapper = mapper.substring(0, mapper.indexOf("["));
 		}
+
 		index = mapper.indexOf(':');
+
 		if (index != -1) {
 			attribute = mapper.substring(0, mapper.indexOf(":"));
 			mapper = mapper.substring(mapper.indexOf(":") + 1);
 		}
+
 		try {
 			Class mapperClass = Class.forName(mapper);
 			Object mapperObj;

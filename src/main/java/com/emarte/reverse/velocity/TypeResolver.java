@@ -20,6 +20,7 @@ public class TypeResolver {
 			Method valueOfMethod = fieldClazz.getMethod("valueOf", String.class);
 			return valueOfMethod.invoke(null, value);
 		}
+
 		return value;
 	}
 }
