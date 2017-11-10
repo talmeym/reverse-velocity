@@ -18,13 +18,6 @@ import static org.junit.Assert.assertEquals;
 
 public class IntegrationTest {
 	@Test
-	public void testXmlWithInserts() throws IOException, ParseException, java.text.ParseException {
-		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", streamFile("/testTemplate.xml"));
-		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
-		assertResults(result);
-	}
-
-	@Test
 	public void testXmlNoInserts() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplateNoInserts.xml", streamFile("/testTemplateNoInserts.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
@@ -38,13 +31,22 @@ public class IntegrationTest {
 	}
 
 	@Test
+	public void testXmlWithInserts() throws IOException, ParseException, java.text.ParseException {
+		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplate.xml", streamFile("/testTemplate.xml"));
+		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
+
+		assertResultsObjects(result);
+	}
+
+	@Test
 	public void testNameSpacedXml() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream("namespacedTestTemplate.xml", streamFile("/namespacedTestTemplate.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/namespacedTestMessage.xml")));
-		assertResults(result);
+
+		assertResultsObjects(result);
 	}
 
-	private void assertResults(Map<String, Object> result) throws java.text.ParseException {
+	private void assertResultsObjects(Map<String, Object> result) throws java.text.ParseException {
 		Response response = (Response) result.get("response");
 		assertEquals("Test Message", response.getMessage());
 		assertEquals(parseDate("09-03-1977"), response.getTimestamp());
