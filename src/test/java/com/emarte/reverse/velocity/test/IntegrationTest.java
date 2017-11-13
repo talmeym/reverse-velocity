@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class IntegrationTest {
 	@Test
 	public void testXmlNoInserts() throws IOException, ParseException, java.text.ParseException {
-		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplateNoInserts.xml", streamFile("/testTemplateNoInserts.xml"));
+		Parser parser = ParserFactory.createParserFromTemplateStream(null, streamFile("/testTemplateNoInserts.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
 
 		assertEquals("Test Message", result.get("response-message"));
@@ -32,7 +32,7 @@ public class IntegrationTest {
 
 	@Test
 	public void testXmlWithInserts() throws IOException, ParseException, java.text.ParseException {
-		Parser parser = ParserFactory.createParserFromTemplateStream("testTemplateInserts.xml", streamFile("/testTemplateInserts.xml"));
+		Parser parser = ParserFactory.createParserFromTemplateStream(null, streamFile("/testTemplateInserts.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
 
 		assertResultsObjects(result);
@@ -40,7 +40,7 @@ public class IntegrationTest {
 
 	@Test
 	public void testNameSpacedXml() throws IOException, ParseException, java.text.ParseException {
-		Parser parser = ParserFactory.createParserFromTemplateStream("namespacedTestTemplate.xml", streamFile("/namespacedTestTemplate.xml"));
+		Parser parser = ParserFactory.createParserFromTemplateStream(null, streamFile("/namespacedTestTemplate.xml"));
 		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/namespacedTestMessage.xml")));
 
 		assertResultsObjects(result);
