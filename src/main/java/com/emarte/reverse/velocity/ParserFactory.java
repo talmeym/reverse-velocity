@@ -1,5 +1,6 @@
 package com.emarte.reverse.velocity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,7 +11,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.apache.commons.io.IOUtils;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -23,7 +23,7 @@ public class ParserFactory {
 		ParserConfig config = new ParserConfig();
 		
 		try {
-			String template = IOUtils.toString(templateStream);
+			String template = FileUtil.toString(templateStream);
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			factory.setNamespaceAware(true);
 			SAXParser parser = factory.newSAXParser();

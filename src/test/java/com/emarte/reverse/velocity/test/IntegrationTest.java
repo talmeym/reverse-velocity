@@ -1,9 +1,9 @@
 package com.emarte.reverse.velocity.test;
 
+import com.emarte.reverse.velocity.FileUtil;
 import com.emarte.reverse.velocity.ParseException;
 import com.emarte.reverse.velocity.Parser;
 import com.emarte.reverse.velocity.ParserFactory;
-import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class IntegrationTest {
 	@Test
 	public void testXmlNoInserts() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream(null, streamFile("/testTemplateNoInserts.xml"));
-		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
+		Map<String, Object> result = parser.parse(FileUtil.toString(streamFile("/testMessage.xml")));
 
 		assertEquals("Test Message", result.get("response-message"));
 		assertEquals(parseDate("09-03-1977"), result.get("response-timestamp"));
@@ -33,7 +33,7 @@ public class IntegrationTest {
 	@Test
 	public void testXmlWithInserts() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream(null, streamFile("/testTemplateInserts.xml"));
-		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/testMessage.xml")));
+		Map<String, Object> result = parser.parse(FileUtil.toString(streamFile("/testMessage.xml")));
 
 		assertResultsObjects(result);
 	}
@@ -41,7 +41,7 @@ public class IntegrationTest {
 	@Test
 	public void testNameSpacedXml() throws IOException, ParseException, java.text.ParseException {
 		Parser parser = ParserFactory.createParserFromTemplateStream(null, streamFile("/namespacedTestTemplate.xml"));
-		Map<String, Object> result = parser.parse(IOUtils.toString(streamFile("/namespacedTestMessage.xml")));
+		Map<String, Object> result = parser.parse(FileUtil.toString(streamFile("/namespacedTestMessage.xml")));
 
 		assertResultsObjects(result);
 	}
