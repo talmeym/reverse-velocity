@@ -23,7 +23,7 @@ public class IntegrationTest {
 		Map<String, Object> result = parser.parse(FileUtil.toString(streamFile("/testMessage.xml")));
 
 		assertEquals("Test Message", result.get("response-message"));
-		assertEquals(parseDate("09-03-1977"), result.get("response-timestamp"));
+		assertEquals(parseDate("08-06-1987"), result.get("response-timestamp"));
 		assertEquals(asList("installation", "hardware"), result.get("response-product-types"));
 		assertEquals(asList("1", "2"), result.get("response-product-ids"));
 		assertEquals(asList("STB Standard Install", "STB HD"), result.get("response-product-names"));
@@ -49,7 +49,7 @@ public class IntegrationTest {
 	private void assertResultsObjects(Map<String, Object> result) throws java.text.ParseException {
 		Response response = (Response) result.get("response");
 		assertEquals("Test Message", response.getMessage());
-		assertEquals(parseDate("09-03-1977"), response.getTimestamp());
+		assertEquals(parseDate("08-06-1987"), response.getTimestamp());
 
 		List<Product> products = response.getProducts();
 		assertEquals(2, products.size());

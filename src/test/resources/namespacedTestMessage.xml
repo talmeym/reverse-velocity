@@ -1,5 +1,5 @@
 <rv:response xmlns:rv="http://www.emarte.org/reverse-velocity">
-	<rv:date>09-03-1977</rv:date>
+	<rv:date>08-06-1987</rv:date>
 	<rv:message>Test Message</rv:message>
 	<rv:product type='installation'>
 		<rv:id>1</rv:id>
