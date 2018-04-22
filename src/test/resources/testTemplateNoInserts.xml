@@ -1,5 +1,5 @@
 <response>
-	<date mapper="com.emarte.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response-timestamp</date>
+	<date _mapper="com.emarte.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response-timestamp</date>
 	<message>$response-message</message>
 	<product type="$response-product-types">
 		<id>$response-product-ids</id>

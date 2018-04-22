@@ -11,9 +11,9 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 
 	@Override
 	protected void processElement(String path, Attributes attributes) {
-		String insert = attributes.getValue("insert");
-		String clazz = attributes.getValue("class");
-		String list = attributes.getValue("list");
+		String insert = attributes.getValue("_insert");
+		String clazz = attributes.getValue("_class");
+		String list = attributes.getValue("_list");
 
 		if (insert != null && clazz != null) {
 			try {
@@ -25,18 +25,21 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 				}
 			}
 			catch (ClassNotFoundException e) {
-				throw new IllegalStateException("Class [" + clazz + "] not found");
+				throw new IllegalArgumentException("Class [" + clazz + "] not found");
 			}
 		}
 
-		addTypeMapperIfAppropriate(path, attributes.getValue("mapper"));
+		addTypeMapperIfAppropriate(path, attributes.getValue("_type"), attributes.getValue("_mapper"));
 		
 		if (attributes.getLength() > 0) {
 			processAttributes(path, attributes);
 		}
 	}
 
-	private void addTypeMapperIfAppropriate(String path, String mapper) {
+	private void addTypeMapperIfAppropriate(String path, String type, String mapper) {
+		if(type != null) {
+			mapper = "com.emarte.reverse.velocity.mapping.JavaTypesMapper[" + type + "]";
+		}
 		if(mapper != null) {
 			TypeMapperLoader.loadTypeMapper(path, mapper, config);
 		}

@@ -1,7 +1,7 @@
-<response insert="response" class="com.emarte.reverse.velocity.test.Response">
-	<date mapper="com.emarte.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response.timestamp</date>
+<response _insert="response" _class="com.emarte.reverse.velocity.test.Response">
+	<date _mapper="com.emarte.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response.timestamp</date>
 	<message>$response.message</message>
-	<product insert="response.products" class="com.emarte.reverse.velocity.test.Product" type="$response.products.type" mapper="@type:com.emarte.reverse.velocity.test.ProductTypeMapper">
+	<product _insert="response.products" _class="com.emarte.reverse.velocity.test.Product" type="$response.products.type" _mapper="@type:com.emarte.reverse.velocity.test.ProductTypeMapper">
 		<id>$response.products.id</id>
 		<name>$response.products.name</name>
 		<description>$response.products.description</description>

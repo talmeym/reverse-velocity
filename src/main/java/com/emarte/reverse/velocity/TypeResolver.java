@@ -11,8 +11,8 @@ public class TypeResolver {
 				return value;
 			} if (fieldClazz == int.class || fieldClazz == Integer.class) {
 				return Integer.parseInt((String) value);
-			} else if (fieldClazz == float.class || fieldClazz == Float.class) {
-				return Float.parseFloat((String) value);
+			} else if (fieldClazz == long.class || fieldClazz == Long.class) {
+				return Long.parseLong((String) value);
 			} else if (fieldClazz == float.class || fieldClazz == Float.class) {
 				return Float.parseFloat((String) value);
 			} else if (fieldClazz == double.class || fieldClazz == Double.class) {

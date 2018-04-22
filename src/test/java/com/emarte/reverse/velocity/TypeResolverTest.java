@@ -13,6 +13,9 @@ public class TypeResolverTest {
         assertEquals(12.5f, TypeResolver.resolveType(float.class, "12.5"));
         assertEquals(12.5f, TypeResolver.resolveType(Float.class, "12.5"));
 
+        assertEquals(12L, TypeResolver.resolveType(long.class, "12"));
+        assertEquals(12L, TypeResolver.resolveType(Long.class, "12"));
+
         assertEquals(12.5d, TypeResolver.resolveType(double.class, "12.5"));
         assertEquals(12.5d, TypeResolver.resolveType(Double.class, "12.5"));
 
