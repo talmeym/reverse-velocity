@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class TypeResolver {
-	@SuppressWarnings("unchecked")
-	public static Object resolveType(Class fieldClazz, Object value) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+	@SuppressWarnings({"JavaReflectionInvocation"})
+	public static Object resolveType(Class<?> fieldClazz, Object value) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 		if(value instanceof String) {
 			if(fieldClazz == String.class) {
 				return value;
@@ -23,6 +23,16 @@ public class TypeResolver {
 				Method valueOfMethod = fieldClazz.getMethod("valueOf", String.class);
 				return valueOfMethod.invoke(null, value);
 			}
+		}
+
+		// TODO overcome auto-boxing limitation ??
+		if(value instanceof Integer && (fieldClazz == int.class)) {
+			return value;
+		}
+
+		// TODO overcome auto-boxing limitation ??
+		if(value instanceof Float && (fieldClazz == float.class)) {
+			return value;
 		}
 
 		throw new IllegalArgumentException(String.format("Cannot resolve type from fieldClass '%s' and value '%s'", fieldClazz.getName(), value));

@@ -1,14 +1,13 @@
 package uk.emarte.reverse.velocity;
 
-import java.util.Stack;
-
 import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import java.util.Stack;
 
 abstract class AbstractContentHandler extends DefaultHandler {
 	private final StringBuffer buffer = new StringBuffer();
-	private final Stack<String> path = new Stack<String>();
+	private final Stack<String> path = new Stack<>();
 	
 	AbstractContentHandler() {
 		// can't peek an empty stack
@@ -20,12 +19,12 @@ abstract class AbstractContentHandler extends DefaultHandler {
 	protected abstract void processText(String path, String text);
 	
 	@Override
-	public void characters(char[] ch, int start, int length) throws SAXException {
+	public void characters(char[] ch, int start, int length) {
 		buffer.append(ch, start, length);
     }
 
 	@Override
-	public void endElement(String namespaceURI, String localName, String qname) throws SAXException {
+	public void endElement(String namespaceURI, String localName, String qname) {
 		String text = buffer.toString().trim();
 		buffer.setLength(0);
 
@@ -37,7 +36,7 @@ abstract class AbstractContentHandler extends DefaultHandler {
     }
 
 	@Override
-	public void startElement(String namespaceURI, String localName, String qname, Attributes attributes) throws SAXException {
+	public void startElement(String namespaceURI, String localName, String qname, Attributes attributes) {
 		boolean namespaced = namespaceURI != null && namespaceURI.trim().length() > 0;
 		String elementName = namespaced ? namespaceURI + ":" + localName : localName;
 		path.push(path.peek() + "/" + elementName);

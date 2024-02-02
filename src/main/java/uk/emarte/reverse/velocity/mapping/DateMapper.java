@@ -1,10 +1,10 @@
 package uk.emarte.reverse.velocity.mapping;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import uk.emarte.reverse.velocity.MappingException;
 import uk.emarte.reverse.velocity.TypeMapper;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class DateMapper implements TypeMapper {
 	private final String dateFormat;

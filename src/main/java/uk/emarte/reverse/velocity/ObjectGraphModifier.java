@@ -13,10 +13,10 @@ class ObjectGraphModifier {
 		this.fieldNames = fieldNames;
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "SuspiciousSystemArraycopy"})
 	void modifyField(final Object obj, final Object value) {
 		Object target = obj;
-		Class targetClass = obj.getClass();
+		Class<?> targetClass = obj.getClass();
 
 		try {
 			for (int i = 0; i < fieldNames.length; i++) {
@@ -30,7 +30,7 @@ class ObjectGraphModifier {
 						target = array[array.length - 1];
 						targetClass = fieldValue.getClass().getComponentType();
 					} else if (fieldValue instanceof List) {
-						List list = (List) fieldValue;
+						List<Object> list = (List<Object>) fieldValue;
 						Object lastElement = list.get(list.size() - 1);
 						target = lastElement;
 						targetClass = lastElement.getClass();
@@ -39,8 +39,8 @@ class ObjectGraphModifier {
 						targetClass = fieldValue.getClass();
 					}
 				} else {
-					Class fieldClazz = getter.getReturnType();
-					Class componentClass = fieldClazz.getComponentType();
+					Class<?> fieldClazz = getter.getReturnType();
+					Class<?> componentClass = fieldClazz.getComponentType();
 					Method setter = targetClass.getMethod(setterMethodName(fieldName), fieldClazz);
 
 					if (componentClass != null) {
@@ -57,10 +57,10 @@ class ObjectGraphModifier {
 						}
 					} else if (fieldClazz == List.class) {
 						if (fieldValue != null) {
-							List list = (List) fieldValue;
+							List<Object> list = (List<Object>) fieldValue;
 							list.add(value);
 						} else {
-							List newList = new ArrayList();
+							List<Object> newList = new ArrayList<>();
 							newList.add(value);
 							setter.invoke(target, newList);
 						}
@@ -75,17 +75,9 @@ class ObjectGraphModifier {
 					}
 				}
 			}
-		} catch (IllegalAccessException e) {
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | NoSuchMethodException e) {
 			barf(obj, value, e);
-		} catch (IllegalArgumentException e) {
-			barf(obj, value, e);
-		} catch (InvocationTargetException e) {
-			barf(obj, value, e);
-		} catch (SecurityException e) {
-			barf(obj, value, e);
-		} catch (NoSuchMethodException e) {
-			barf(obj, value, e);
-		} 
+		}
 	}
 
 	private void barf(Object obj, Object value, Throwable e) {

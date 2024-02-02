@@ -1,16 +1,14 @@
 package uk.emarte.reverse.velocity;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
-@SuppressWarnings("unchecked")
 class ParserConfig {
-	private final Map<String, MapProcessor> elementProcessorsByPath = new HashMap<String, MapProcessor>();
-	private final Map<String, MapProcessor> textProcessorsByPath = new HashMap<String, MapProcessor>();
-	private final Map<String, Class> classesByPath = new HashMap<String, Class>();
-	private final Map<String, Boolean> listByPath = new HashMap<String, Boolean>();
-	private final Map<String, TypeMapper> typeMappersByPath = new HashMap<String, TypeMapper>();
+	private final Map<String, MapProcessor> elementProcessorsByPath = new HashMap<>();
+	private final Map<String, MapProcessor> textProcessorsByPath = new HashMap<>();
+	private final Map<String, Class<?>> classesByPath = new HashMap<>();
+	private final Map<String, Boolean> listByPath = new HashMap<>();
+	private final Map<String, TypeMapper> typeMappersByPath = new HashMap<>();
 
 	void addProcessorForElement(String path, MapProcessor processor) {
 		checkKey(path, elementProcessorsByPath, "element processing");
@@ -30,12 +28,12 @@ class ParserConfig {
 		return textProcessorsByPath.get(path);
 	}
 	
-	void addClassForPath(String path, Class clazz) {
+	void addClassForPath(String path, Class<?> clazz) {
 		checkKey(path, classesByPath, "class definition");
 		classesByPath.put(path, clazz);
 	}
 	
-	Class getClassForPath(String path) {
+	Class<?> getClassForPath(String path) {
 		return classesByPath.get(path);
 	}
 	
@@ -57,32 +55,27 @@ class ParserConfig {
 		return typeMappersByPath.get(path);
 	}
 
-	private void checkKey(String path, Map map, String context) {
+	private void checkKey(String path, Map<?, ?> map, String context) {
 		if(map.containsKey(path)) {
 			throw new IllegalStateException("Duplicate processing instruction, context='" + context + "', path='" + path + "'");
 		}
 	}
 
 	void validate() {
-		for (Iterator<Map.Entry<String, MapProcessor>> iterator = elementProcessorsByPath.entrySet().iterator(); iterator.hasNext();) {
-			Map.Entry<String, MapProcessor> entry = iterator.next();
+		for (Map.Entry<String, MapProcessor> entry : elementProcessorsByPath.entrySet()) {
 			MapProcessor mapProcessor = entry.getValue();
 
 			if (mapProcessor.getFieldModifier() != null) {
-				if (!classesByPath.keySet().contains(entry.getKey())) {
+				if (!classesByPath.containsKey(entry.getKey())) {
 					throw new IllegalStateException("class definition missing for element insert [" + mapProcessor + "]");
 				}
 
-				Class clazz = null;
+				Class<?> clazz = null;
 
 				try {
 					clazz = classesByPath.get(entry.getKey());
 					clazz.newInstance();
-				}
-				catch (IllegalAccessException ex) {
-					throw new IllegalStateException("class [" + clazz.getName() + "] cannot be instantiated");
-				}
-				catch (InstantiationException e) {
+				} catch (IllegalAccessException | InstantiationException ex) {
 					throw new IllegalStateException("class [" + clazz.getName() + "] cannot be instantiated");
 				}
 

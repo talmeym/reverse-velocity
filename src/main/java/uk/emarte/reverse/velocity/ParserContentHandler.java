@@ -11,11 +11,10 @@ class ParserContentHandler extends AbstractContentHandler {
 		this.result = result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void processElement(String path, Attributes attributes) {
 		MapProcessor valueProcessor = config.getProcessorForElement(path);
-		Class clazz = null;
+		Class<?> clazz = null;
 		Boolean list;
 
 		if (valueProcessor != null) {
@@ -24,10 +23,7 @@ class ParserContentHandler extends AbstractContentHandler {
 				list = config.getListForPath(path);
 				valueProcessor.processValue(result, clazz.newInstance(), list != null && list);
 			}
-			catch (IllegalAccessException ie) {
-				throw new IllegalStateException("Failed to instantiate class [" + clazz + "]");
-			}
-			catch (InstantiationException e) {
+			catch (IllegalAccessException | InstantiationException ie) {
 				throw new IllegalStateException("Failed to instantiate class [" + clazz + "]");
 			}
 		}
