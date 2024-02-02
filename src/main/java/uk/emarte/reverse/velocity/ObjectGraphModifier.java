@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class ObjectGraphModifier {
-	private String[] fieldNames;
+	private final String[] fieldNames;
 
 	ObjectGraphModifier(String[] fieldNames) {
 		this.fieldNames = fieldNames;

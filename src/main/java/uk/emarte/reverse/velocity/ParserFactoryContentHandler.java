@@ -3,7 +3,7 @@ package uk.emarte.reverse.velocity;
 import org.xml.sax.Attributes;
 
 class ParserFactoryContentHandler extends AbstractContentHandler {
-	private ParserConfig config;
+	private final ParserConfig config;
 	
 	ParserFactoryContentHandler(ParserConfig config) {
 		this.config = config;

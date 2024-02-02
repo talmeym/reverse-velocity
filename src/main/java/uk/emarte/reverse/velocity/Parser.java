@@ -9,7 +9,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 
 public class Parser {
-
 	private final ParserConfig config;
 
 	Parser(ParserConfig config) {

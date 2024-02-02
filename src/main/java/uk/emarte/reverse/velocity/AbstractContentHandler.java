@@ -7,8 +7,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 abstract class AbstractContentHandler extends DefaultHandler {
-	private StringBuffer buffer = new StringBuffer();
-	private Stack<String> path = new Stack<String>();
+	private final StringBuffer buffer = new StringBuffer();
+	private final Stack<String> path = new Stack<String>();
 	
 	AbstractContentHandler() {
 		// can't peek an empty stack

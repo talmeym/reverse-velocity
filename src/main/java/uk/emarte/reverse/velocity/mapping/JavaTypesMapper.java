@@ -4,7 +4,7 @@ import uk.emarte.reverse.velocity.MappingException;
 import uk.emarte.reverse.velocity.TypeMapper;
 
 public class JavaTypesMapper implements TypeMapper {
-    private Type type;
+    private final Type type;
 
     public JavaTypesMapper(String type) {
         if(!Type.contains(type)) {

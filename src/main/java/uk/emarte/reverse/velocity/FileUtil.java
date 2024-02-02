@@ -14,6 +14,6 @@ public class FileUtil {
             outputStream.write(buffer, 0, bytesRead);
         }
 
-        return new String(outputStream.toByteArray());
+        return outputStream.toString();
     }
 }

@@ -3,8 +3,8 @@ package uk.emarte.reverse.velocity;
 import org.xml.sax.Attributes;
 
 class ParserContentHandler extends AbstractContentHandler {
-	private ParserConfig config;
-	private ListableMap result;
+	private final ParserConfig config;
+	private final ListableMap result;
 
 	ParserContentHandler(ParserConfig config, ListableMap result) {
 		this.config = config;

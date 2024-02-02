@@ -1,21 +1,24 @@
 package uk.emarte.reverse.velocity;
 
 class MapProcessor {
-	private String insertKey;
-	private ObjectGraphModifier objectModifier;
+	private final String insertKey;
+	private final ObjectGraphModifier objectModifier;
 	
 	MapProcessor(String valueLocationToken) {
 		if(valueLocationToken.indexOf('.') != -1) {
 			String[] tokens = valueLocationToken.split("\\.");
 			insertKey = tokens[0];
+			String[] modifierTokens = null;
 
 			if(tokens.length > 1) {
-				String[] modifierTokens = new String[tokens.length - 1];
+				modifierTokens = new String[tokens.length - 1];
 				System.arraycopy(tokens, 1, modifierTokens, 0, modifierTokens.length);
-				objectModifier = new ObjectGraphModifier(modifierTokens);
 			}
+
+			objectModifier = modifierTokens != null ? new ObjectGraphModifier(modifierTokens) : null;
 		} else {
 			insertKey = valueLocationToken;
+			objectModifier = null;
 		}
 	}
 	
