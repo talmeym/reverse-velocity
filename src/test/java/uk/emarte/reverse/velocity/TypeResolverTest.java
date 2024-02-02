@@ -1,11 +1,11 @@
 package uk.emarte.reverse.velocity;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import uk.emarte.reverse.velocity.test.ProductType;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.junit.Test;
-import uk.emarte.reverse.velocity.test.ProductType;
+import static org.junit.Assert.assertEquals;
 
 public class TypeResolverTest {
     @Test
