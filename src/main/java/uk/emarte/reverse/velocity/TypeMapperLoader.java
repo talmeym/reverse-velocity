@@ -29,7 +29,7 @@ class TypeMapperLoader {
 				Constructor<?> constructor = mapperClass.getConstructor(String.class);
 				mapperObj = constructor.newInstance(arg);
 			} else {
-				mapperObj = mapperClass.newInstance();
+				mapperObj = mapperClass.getDeclaredConstructor().newInstance();
 			}
 
 			if (mapperObj instanceof TypeMapper) {

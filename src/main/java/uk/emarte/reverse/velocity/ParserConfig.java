@@ -1,5 +1,6 @@
 package uk.emarte.reverse.velocity;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,8 +75,8 @@ class ParserConfig {
 
 				try {
 					clazz = classesByPath.get(entry.getKey());
-					clazz.newInstance();
-				} catch (IllegalAccessException | InstantiationException ex) {
+					clazz.getDeclaredConstructor().newInstance();
+				} catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex) {
 					throw new IllegalStateException("class [" + clazz.getName() + "] cannot be instantiated");
 				}
 

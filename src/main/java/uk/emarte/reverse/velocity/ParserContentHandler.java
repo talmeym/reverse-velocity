@@ -2,6 +2,8 @@ package uk.emarte.reverse.velocity;
 
 import org.xml.sax.Attributes;
 
+import java.lang.reflect.InvocationTargetException;
+
 class ParserContentHandler extends AbstractContentHandler {
 	private final ParserConfig config;
 	private final ListableMap result;
@@ -21,9 +23,9 @@ class ParserContentHandler extends AbstractContentHandler {
 			try {
 				clazz = config.getClassForPath(path);
 				list = config.getListForPath(path);
-				valueProcessor.processValue(result, clazz.newInstance(), list != null && list);
+				valueProcessor.processValue(result, clazz.getDeclaredConstructor().newInstance(), list != null && list);
 			}
-			catch (IllegalAccessException | InstantiationException ie) {
+			catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ie) {
 				throw new IllegalStateException("Failed to instantiate class [" + clazz + "]");
 			}
 		}
