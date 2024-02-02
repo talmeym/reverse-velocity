@@ -25,16 +25,6 @@ public class TypeResolver {
 			}
 		}
 
-		// TODO overcome auto-boxing limitation ??
-		if(value instanceof Integer && (fieldClazz == int.class)) {
-			return value;
-		}
-
-		// TODO overcome auto-boxing limitation ??
-		if(value instanceof Float && (fieldClazz == float.class)) {
-			return value;
-		}
-
 		throw new IllegalArgumentException(String.format("Cannot resolve type from fieldClass '%s' and value '%s'", fieldClazz.getName(), value));
 	}
 }
