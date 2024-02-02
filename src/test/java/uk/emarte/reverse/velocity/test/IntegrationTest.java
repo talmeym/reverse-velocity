@@ -25,7 +25,7 @@ public class IntegrationTest {
 		assertEquals("Test Message", result.get("response-message"));
 		assertEquals(parseDate("08-06-1987"), result.get("response-timestamp"));
 		assertEquals(asList("installation", "hardware"), result.get("response-product-types"));
-		assertEquals(asList("1", "2"), result.get("response-product-ids"));
+		assertEquals(asList(1, 2), result.get("response-product-ids"));
 		assertEquals(asList("STB Standard Install", "STB HD"), result.get("response-product-names"));
 		assertEquals(asList("Install for a STB Standard", "An STB HD box"), result.get("response-product-descriptions"));
 	}
