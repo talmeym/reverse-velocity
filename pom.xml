@@ -10,7 +10,7 @@
     <version>0.1.1</version>
     <name>Reverse Velocity</name>
 
-    <description>XML data value extraction through templating</description>
+    <description>XML value extraction through templating</description>
     <url>http://emarte.uk/reverse-velocity</url>
 
     <licenses>
