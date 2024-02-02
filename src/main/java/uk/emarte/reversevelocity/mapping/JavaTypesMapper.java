@@ -1,7 +1,7 @@
-package uk.emarte.reverse.velocity.mapping;
+package uk.emarte.reversevelocity.mapping;
 
-import uk.emarte.reverse.velocity.MappingException;
-import uk.emarte.reverse.velocity.TypeMapper;
+import uk.emarte.reversevelocity.MappingException;
+import uk.emarte.reversevelocity.TypeMapper;
 
 public class JavaTypesMapper implements TypeMapper {
     private final Type type;

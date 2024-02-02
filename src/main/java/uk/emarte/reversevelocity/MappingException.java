@@ -1,4 +1,4 @@
-package uk.emarte.reverse.velocity;
+package uk.emarte.reversevelocity;
 
 // this is purposely a runtime exception as mappers are called from within a sax handler,
 // so we cannot throw a checked exception from the implemented interfaces

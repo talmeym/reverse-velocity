@@ -1,10 +1,10 @@
-package uk.emarte.reverse.velocity.test;
+package uk.emarte.reversevelocity.test;
 
 import org.junit.Test;
-import uk.emarte.reverse.velocity.FileUtil;
-import uk.emarte.reverse.velocity.ParseException;
-import uk.emarte.reverse.velocity.Parser;
-import uk.emarte.reverse.velocity.ParserFactory;
+import uk.emarte.reversevelocity.FileUtil;
+import uk.emarte.reversevelocity.ParseException;
+import uk.emarte.reversevelocity.Parser;
+import uk.emarte.reversevelocity.ParserFactory;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,7 +1,7 @@
-package uk.emarte.reverse.velocity;
+package uk.emarte.reversevelocity;
 
 import org.junit.Test;
-import uk.emarte.reverse.velocity.test.ProductType;
+import uk.emarte.reversevelocity.test.ProductType;
 
 import java.lang.reflect.InvocationTargetException;
 

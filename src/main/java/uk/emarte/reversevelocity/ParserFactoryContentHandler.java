@@ -1,4 +1,4 @@
-package uk.emarte.reverse.velocity;
+package uk.emarte.reversevelocity;
 
 import org.xml.sax.Attributes;
 
@@ -38,7 +38,7 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 
 	private void addTypeMapperIfAppropriate(String path, String type, String mapper) {
 		if(type != null) {
-			mapper = "uk.emarte.reverse.velocity.mapping.JavaTypesMapper[" + type + "]";
+			mapper = "uk.emarte.reversevelocity.mapping.JavaTypesMapper[" + type + "]";
 		}
 		if(mapper != null) {
 			TypeMapperLoader.loadTypeMapper(path, mapper, config);

@@ -1,4 +1,4 @@
-package uk.emarte.reverse.velocity;
+package uk.emarte.reversevelocity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

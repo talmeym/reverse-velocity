@@ -1,4 +1,4 @@
-package uk.emarte.reverse.velocity;
+package uk.emarte.reversevelocity;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
