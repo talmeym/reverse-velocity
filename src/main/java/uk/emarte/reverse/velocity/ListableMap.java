@@ -15,13 +15,13 @@ class ListableMap extends HashMap<String, Object> {
 		Object existing = get(key);
 
 		if(existing instanceof List) {
-			List list = (List) existing;
+			List<Object> list = (List<Object>) existing;
 			list.add(value);
 			return existing;
 		}
 
 		if(existing != null || forceList) {
-			List list = new ArrayList();
+			List<Object> list = new ArrayList<>();
 
 			if(existing != null) {
 				list.add(existing);
@@ -40,7 +40,7 @@ class ListableMap extends HashMap<String, Object> {
 		Object existing = get(key);
 
 		if(existing instanceof List) {
-			List list = (List) existing;
+			List<Object> list = (List<Object>) existing;
 			return list.get(list.size() - 1);
 		}
 

@@ -4,8 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class TypeResolver {
-	@SuppressWarnings("unchecked")
-	public static Object resolveType(Class fieldClazz, Object value) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+	@SuppressWarnings({"JavaReflectionInvocation"})
+	public static Object resolveType(Class<?> fieldClazz, Object value) throws SecurityException, NoSuchMethodException, IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 		if(value instanceof String) {
 			if(fieldClazz == String.class) {
 				return value;

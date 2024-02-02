@@ -1,4 +1,4 @@
-<rv:response xmlns:rv="http://www.emarte.org/reverse-velocity">
+<rv:response xmlns:rv="http://emarte.uk/reverse-velocity">
 	<rv:date>08-06-1987</rv:date>
 	<rv:message>Test Message</rv:message>
 	<rv:product type='installation'>

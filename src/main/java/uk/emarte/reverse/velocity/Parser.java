@@ -1,12 +1,11 @@
 package uk.emarte.reverse.velocity;
 
-import java.io.StringReader;
-import java.util.Map;
+import org.xml.sax.InputSource;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
-import org.xml.sax.InputSource;
+import java.io.StringReader;
+import java.util.Map;
 
 public class Parser {
 	private final ParserConfig config;

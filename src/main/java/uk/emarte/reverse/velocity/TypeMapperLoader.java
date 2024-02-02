@@ -4,7 +4,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 class TypeMapperLoader {
-	@SuppressWarnings("unchecked")
 	static void loadTypeMapper(String path, String mapper, ParserConfig config) {
 		String attribute = "";
 		String arg = null;
@@ -23,14 +22,14 @@ class TypeMapperLoader {
 		}
 
 		try {
-			Class mapperClass = Class.forName(mapper);
+			Class<?> mapperClass = Class.forName(mapper);
 			Object mapperObj;
 
 			if(arg != null) {
-				Constructor constructor = mapperClass.getConstructor(String.class);
+				Constructor<?> constructor = mapperClass.getConstructor(String.class);
 				mapperObj = constructor.newInstance(arg);
 			} else {
-				mapperObj = mapperClass.newInstance();
+				mapperObj = mapperClass.getDeclaredConstructor().newInstance();
 			}
 
 			if (mapperObj instanceof TypeMapper) {
@@ -38,19 +37,19 @@ class TypeMapperLoader {
 			}
 		}
 		catch (ClassNotFoundException e) {
-			throw new IllegalStateException("Class [" + mapper + "] not found");
+			throw new IllegalStateException("Class [" + mapper + "] not found", e);
 		}
 		catch (NoSuchMethodException e) {
-			throw new IllegalStateException("Constructor for [" + mapper + "] not found");
+			throw new IllegalStateException("Constructor for [" + mapper + "] not found", e);
 		}
 		catch (InvocationTargetException e) {
-			throw new IllegalStateException("Exception thrown invoking constructor for [" + mapper + "] with [" + arg + "]");
+			throw new IllegalStateException("Exception thrown invoking constructor for [" + mapper + "] with [" + arg + "]", e);
 		}
 		catch (InstantiationException e) {
-			throw new IllegalStateException("Class [" + mapper + "] not instantiated");
+			throw new IllegalStateException("Class [" + mapper + "] not instantiated", e);
 		}
 		catch (IllegalAccessException e) {
-			throw new IllegalStateException("Class [" + mapper + "] not accessible");
+			throw new IllegalStateException("Class [" + mapper + "] not accessible", e);
 		}
 	}
 }

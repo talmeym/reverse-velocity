@@ -1,10 +1,10 @@
 package uk.emarte.reverse.velocity.test;
 
+import org.junit.Test;
 import uk.emarte.reverse.velocity.FileUtil;
 import uk.emarte.reverse.velocity.ParseException;
 import uk.emarte.reverse.velocity.Parser;
 import uk.emarte.reverse.velocity.ParserFactory;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +25,7 @@ public class IntegrationTest {
 		assertEquals("Test Message", result.get("response-message"));
 		assertEquals(parseDate("08-06-1987"), result.get("response-timestamp"));
 		assertEquals(asList("installation", "hardware"), result.get("response-product-types"));
-		assertEquals(asList("1", "2"), result.get("response-product-ids"));
+		assertEquals(asList(1, 2), result.get("response-product-ids"));
 		assertEquals(asList("STB Standard Install", "STB HD"), result.get("response-product-names"));
 		assertEquals(asList("Install for a STB Standard", "An STB HD box"), result.get("response-product-descriptions"));
 	}
