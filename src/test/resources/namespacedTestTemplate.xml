@@ -1,7 +1,7 @@
-<rv:response _insert="response" _class="com.emarte.reverse.velocity.test.Response" xmlns:rv="http://www.emarte.org/reverse-velocity">
-	<rv:date _mapper="com.emarte.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response.timestamp</rv:date>
+<rv:response _insert="response" _class="uk.emarte.reverse.velocity.test.Response" xmlns:rv="http://www.emarte.org/reverse-velocity">
+	<rv:date _mapper="uk.emarte.reverse.velocity.mapping.DateMapper[dd-MM-yyyy]">$response.timestamp</rv:date>
 	<rv:message>$response.message</rv:message>
-	<rv:product _insert="response.products" _class="com.emarte.reverse.velocity.test.Product" type="$response.products.type" _mapper="@type:com.emarte.reverse.velocity.test.ProductTypeMapper">
+	<rv:product _insert="response.products" _class="uk.emarte.reverse.velocity.test.Product" type="$response.products.type" _mapper="@type:uk.emarte.reverse.velocity.test.ProductTypeMapper">
 		<rv:id>$response.products.id</rv:id>
 		<rv:name>$response.products.name</rv:name>
 		<rv:description>$response.products.description</rv:description>
