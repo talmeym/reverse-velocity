@@ -80,28 +80,11 @@ class ObjectGraphModifier {
 				}
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SecurityException | NoSuchMethodException e) {
-			barf(obj, value, e);
+			throw new IllegalStateException(
+					"Could not modify '" + String.join(".", fieldNames) +
+					"' of object graph '" + obj + "' with value of class '" +
+					value.getClass().getName() + "'. Check cause exception for more information.", e);
 		}
-	}
-
-	private void barf(Object obj, Object value, Throwable e) {
-		throw new IllegalStateException(
-				"Could not modify '" + 
-				toStringFieldNames() + 
-				"' of object graph '" + 
-				obj + 
-				"' with value of class '" + 
-				value.getClass().getName() + 
-				"'. Check cause exception for more information.", e);
-	}
-	
-	private String toStringFieldNames() {
-		StringBuilder stringBuilder = new StringBuilder(fieldNames[0]);
-		for(int i = 1; i < fieldNames.length; i++) {
-			stringBuilder.append(".");
-			stringBuilder.append(fieldNames[i]);
-		}
-		return stringBuilder.toString();
 	}
 
 	private String getterMethodName(String fieldName) {
