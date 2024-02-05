@@ -7,7 +7,7 @@
     <groupId>uk.emarte.reversevelocity</groupId>
     <artifactId>reverse-velocity</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <name>Reverse Velocity</name>
 
     <description>XML value extraction through templating</description>
