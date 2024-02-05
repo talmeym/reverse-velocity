@@ -19,6 +19,7 @@ public class DateMapper implements TypeMapper {
 	
 	public Object map(String value) throws MappingException {
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+
 		try {
 			return sdf.parse(value);
 		} catch (ParseException pe) {

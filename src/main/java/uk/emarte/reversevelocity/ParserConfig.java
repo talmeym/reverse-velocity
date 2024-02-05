@@ -80,8 +80,8 @@ class ParserConfig {
 				try {
 					clazz = classesByPath.get(entry.getKey());
 					clazz.getDeclaredConstructor().newInstance();
-				} catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex) {
-					throw new IllegalStateException("class [" + clazz.getName() + "] cannot be instantiated");
+				} catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+					throw new IllegalStateException("class [" + clazz.getName() + "] cannot be instantiated", e);
 				}
 
 				if (listByPath.containsKey(entry.getKey())) {

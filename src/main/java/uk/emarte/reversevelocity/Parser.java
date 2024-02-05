@@ -27,8 +27,8 @@ public class Parser {
 			SAXParser parser = factory.newSAXParser();
 			parser.parse(new InputSource(new StringReader(xml)), new ParserContentHandler(config, result));
 		}
-		catch (Exception ex) {
-			throw new ParseException("Error parsing xml: " + ex.getMessage(), ex);
+		catch (Exception e) {
+			throw new ParseException("Error parsing xml: " + e.getMessage(), e);
 		}
 
 		return result;

@@ -29,8 +29,8 @@ class ParserContentHandler extends AbstractContentHandler {
 				list = config.getListForPath(path);
 				valueProcessor.processValue(result, clazz.getDeclaredConstructor().newInstance(), list != null && list);
 			}
-			catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ie) {
-				throw new IllegalStateException("Failed to instantiate class [" + clazz + "]");
+			catch (IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+				throw new IllegalStateException("Failed to instantiate class [" + clazz + "]", e);
 			}
 		}
 

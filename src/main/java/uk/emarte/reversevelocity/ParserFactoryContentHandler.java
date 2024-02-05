@@ -29,7 +29,7 @@ class ParserFactoryContentHandler extends AbstractContentHandler {
 				}
 			}
 			catch (ClassNotFoundException e) {
-				throw new IllegalArgumentException("Class [" + clazz + "] not found");
+				throw new IllegalArgumentException("Class [" + clazz + "] not found", e);
 			}
 		}
 

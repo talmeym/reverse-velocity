@@ -28,11 +28,11 @@ public class ParserFactory {
 			parser.parse(new InputSource(new StringReader(template)), new ParserFactoryContentHandler(config));
 		}
 		catch (IOException e) {
-			throw new IllegalArgumentException("Template '" + templateName + "' could not be read");
+			throw new IllegalArgumentException("Template '" + templateName + "' could not be read", e);
 		} catch (SAXException e) {
-			throw new IllegalArgumentException("Template '" + templateName + "' contains invalid xml");
+			throw new IllegalArgumentException("Template '" + templateName + "' contains invalid xml", e);
 		} catch (ParserConfigurationException e) {
-			throw new IllegalArgumentException("Cannot create SAXParser - check internal config");
+			throw new IllegalArgumentException("Cannot create SAXParser - check internal config", e);
 		}
 
 		config.validate();
